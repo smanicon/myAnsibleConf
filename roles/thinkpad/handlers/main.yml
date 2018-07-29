@@ -1,0 +1,12 @@
+---
+- name : unload intel wireless
+  modprobe:
+    name: iwlwifi
+    state: absent
+  listen: reload intel wireless
+- name : load intel wireless
+  modprobe:
+    name: iwlwifi
+    state: present
+  listen: reload intel wireless
+...

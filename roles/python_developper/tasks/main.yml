@@ -1,0 +1,9 @@
+- name: Install Python
+  apt:
+    name: python3
+- name: Install Venv
+  apt:
+    name: python3-venv
+- name: Install Tk
+  apt:
+    name: python3-tk

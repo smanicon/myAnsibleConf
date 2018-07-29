@@ -1,0 +1,17 @@
+- name: Installation de Java
+  apt:
+    name: default-jdk
+- name: Installation des outils
+  apt:
+    name: "{{item}}"
+  with_items:
+  - maven
+  - gradle
+- name: Create Intellij directory
+  file: path=/opt/Intellij state=directory
+- name: Download Intellij
+  unarchive:
+    src: https://download.jetbrains.com/idea/ideaIC-2018.2.tar.gz
+    dest: /opt/
+    remote_src: yes
+

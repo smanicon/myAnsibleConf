@@ -1,0 +1,10 @@
+---
+- name: Add repository intelwireless
+  apt_repository:
+    repo: deb http://httpredir.debian.org/debian/ stretch main contrib non-free
+    state: present
+- name: install intelwireless driver
+  apt:
+    name: firmware-iwlwifi
+  notify: reload intel wireless  
+...

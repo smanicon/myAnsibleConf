@@ -1,0 +1,20 @@
+- name: Install packages to allow apt to use a repository over HTTPS
+  apt:
+    name: "{{item}}"
+  with_items:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gnupg2
+  - software-properties-common
+- name: Add Docker key repository
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+- name: Add docker repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+    state: present
+- name: Install packages to allow apt to use a repository over HTTPS
+  apt:
+    name: docker-ce

@@ -1,0 +1,19 @@
+---
+- name: Add key for Enpass
+  apt_key:
+    url: https://dl.sinew.in/keys/enpass-linux.key
+- name: Add repository Enpass
+  apt_repository:
+    repo: deb http://repo.sinew.in/ stable main
+    filename: ansible
+- name: Install Enpass
+  apt:
+    name: enpass
+    update_cache: yes
+- name: Install base package
+  apt: 
+    name: "{{ item }}"
+  with_items:
+  - vim
+  - git
+...
