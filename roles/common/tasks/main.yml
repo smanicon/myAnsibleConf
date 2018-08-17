@@ -16,4 +16,21 @@
   with_items:
   - vim
   - git
+  - powerline
+  - tmux  
+  - keyboard-configuration
+  - console-setup
+- name: Set keyboard US International
+  lineinfile:
+    dest: /etc/default/keyboard
+    regexp: '^{{ item.name }}='
+    line: '{{ item.name }}="{{ item.value }}"'
+    create: yes
+  with_items:
+  - {name: 'XKBMODEL',   value: 'pc105'}
+  - {name: 'XKBLAYOUT',  value: 'us'}
+  - {name: 'XKBVARIANT', value: 'alt-intl'}
+  - {name: 'XKBOPTIONS', value: 'compose:ralt'}
+  notify:
+  - restart keyboard
 ...
